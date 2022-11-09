@@ -8,6 +8,11 @@ Write a function called addTwo that takes in an array and adds two to every valu
 
 const addTwo = (arr) => {
   // Solution code here...
+  let newArr = [];
+  for(let i = 0; i < arr.length; i++) {
+    newArr.push(arr[i]+2);
+  }
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -20,6 +25,10 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 
 const typeNum = (arr) => {
   // Solution code here...
+  arr = arr.filter(index => {
+    return (typeof index === 'number');
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -32,6 +41,10 @@ For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 
 const containsAnd = (arr) => {
   // Solution code here...
+  arr = arr.filter(index => {
+    return (index.includes('and'));
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,6 +57,10 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
+  arr = arr.filter(index => {
+    return (index%2===1);
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,6 +73,10 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+  arr = arr.filter(index => {
+    return !(forbiddenValues.includes(index));
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,6 +120,10 @@ const snorlaxData = {
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
   // Solution code here...
+  arr = arr.filter(index => {
+    return (index.baseStat > minBaseStat);
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -111,6 +136,10 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 
 const getStatName = (arr, minBaseStat) => {
   // Solution code here...
+  // arr = arr.filter(index => {
+  //   return (index.name index.baseStat > minBaseStat);
+  // });
+  // return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -246,7 +275,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return an array containing the stats that are greater than the input', () => {
     expect(getBaseStatGreaterThan(snorlaxData.stats, 75)).toStrictEqual([ { stat: { url: 'https://pokeapi.co/api/v2/stat/5/', name: 'special-defense' }, effort: 2, baseStat: 110 } ]);
     expect(getBaseStatGreaterThan(snorlaxData.stats, 75).length).toStrictEqual(1);
