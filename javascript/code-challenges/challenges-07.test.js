@@ -26,9 +26,7 @@ let starWarsPeople = [
 
 const sortStarWarsCharacters = (starWarsArr) => {
   // Solution code here...
-  return starWarsArr.sort((personA, personB) => {
-    return (personB.height - personA.height);
-  });
+  return starWarsArr.sort((personA, personB) => (personB.height - personA.height));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,13 +68,10 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
-  let sample = str.split('');
-  result.push(sample.join(''));
-
-  while(sample.length > 0) {
-    sample.shift();
-    result.push(sample.join(''));
+  for(let i = 0; i < str.length; i++) {
+    result.push(str.slice(i));
   }
+  result.push('');
 
   return result;
 };
@@ -137,7 +132,6 @@ const gruffaloCrumble = {
 
 
 const listFoods = (recipe) => {
-  let result = [];
   // Solution code here...
   return recipe.ingredients.map(name => name.slice(name.indexOf(' ', 3) + 1));
 };
