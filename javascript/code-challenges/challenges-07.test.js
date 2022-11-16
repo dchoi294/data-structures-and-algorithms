@@ -70,10 +70,12 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
-  result = str.split('');
-  while(result.length > 0) {
-    result.shift(str.split(''));
-    result.push(str.split(''));
+  let sample = str.split('');
+  result.push(sample.join(''));
+
+  while(sample.length > 0) {
+    sample.shift();
+    result.push(sample.join(''));
   }
 
   return result;
@@ -137,10 +139,7 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
-  for(let i = 0; i < recipe.ingredients.length; i++) {
-    result.push(recipe.ingredients[i].splice(2));
-  }
-  return result;
+  return recipe.ingredients.map(name => name.slice(name.indexOf(' ', 3) + 1));
 };
 
 /* ------------------------------------------------------------------------------------------------
