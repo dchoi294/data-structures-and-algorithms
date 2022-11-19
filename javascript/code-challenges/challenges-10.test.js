@@ -9,6 +9,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 
 function returnTen(str){
   // Solution code here...
+  return str.split('').slice(-10);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,6 +28,13 @@ return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
   // Solution code here...
+  let max = 0;
+  for(let i in matrix) {
+    for(let j in matrix[i]) {
+      matrix[i][j] > max ? max=matrix[i][j]:max;
+    }
+  }
+  return max;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,6 +53,13 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
+  let total = 0;
+  for(let i in matrix) {
+    for(let j in matrix[i]) {
+      total += matrix[i][j];
+    }
+  }
+  return total;
 };
 
 
@@ -72,7 +87,15 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
-
+  let totalArr = stores[0].map((hourly, j) => {
+    // console.log(j);
+    let total = 0;
+    for(let i in stores) {
+      total+=stores[i][j];
+    }
+    return total;
+  });
+  return totalArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,6 +110,11 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 
 const salesData = (hours, data) => {
   // Solution code here...
+  let arr = [];
+  for(let i = 0; i < hours.length; i++) {
+    arr.push({sales: data[i] +' cookies', time: hours[i]});
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,6 +140,7 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  return arr[2].items[1].quantity;
 };
 
 /* ------------------------------------------------------------------------------------------------
