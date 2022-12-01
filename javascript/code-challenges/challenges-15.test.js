@@ -13,7 +13,7 @@ Write a function named screenForNames that takes in an array of strings and uses
 const screenForNames = (arr) => {
   // Solution code here...
   return arr.filter(str => /^(Mr. |Mrs. |Ms. |Dr. )[a-zA-Z]/g.test(str));
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -165,6 +165,48 @@ Here is a sample board:
 
 const detectTicTacToeWin = (board) => {
   // Solution code here...
+
+  function helpCheck(row1, col1, row2, col2, row3, col3){
+    let pos1 = board[row1][col1];
+    let pos2 = board[row2][col2];
+    let pos3 = board[row3][col3];
+
+    if(pos1==='X' && pos2==='X' && pos3==='X'){
+      return true;
+    }else if(pos1==='O' && pos2==='O' && pos3==='O'){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  if(helpCheck(0,0,1,0,2,0)){
+    return true;
+  }
+  if(helpCheck(0,1,1,1,2,1)){
+    return true;
+  }
+  if(helpCheck(0,2,1,2,2,2)){
+    return true;
+  }
+
+  if(helpCheck(0,0,0,1,0,2)){
+    return true;
+  }
+  if(helpCheck(1,0,1,1,1,2)){
+    return true;
+  }
+  if(helpCheck(2,0,2,1,2,2)){
+    return true;
+  }
+
+  if(helpCheck(0,0,1,1,2,2)){
+    return true;
+  }
+  if(helpCheck(0,2,1,1,2,0)){
+    return true;
+  }
+  return false;
 
 };
 
