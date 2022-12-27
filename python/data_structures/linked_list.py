@@ -22,13 +22,14 @@ class LinkedList:
         return False
 
     def __str__(self):
+        values = []
         current = self.head
-        values = ""
         while current is not None:
-            values += f"{{ {str(current.value)} }} -> "
+            values.append("{ " + str(current.value) + " }")
             current = current.next
-        values += "Null"
-        return values
+        if len(values) == 0:
+            return "NULL"
+        return " -> ".join(values) + " -> NULL"
 
 
 class Node:
