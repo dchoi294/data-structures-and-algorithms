@@ -1,3 +1,9 @@
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+
 class LinkedList:
     """
     Put docstring here
@@ -7,8 +13,28 @@ class LinkedList:
         # initialization here
         self.head = None
 
+    def append(self, value):
+        self.linked_list.append(Node(value))
+
+    def insert_before(self, find, value):
+        newNode = Node(value)
+        node = self.head
+        if node is not None:
+            if node.value == find:
+                newNode.next = self.head
+                self.head = newNode
+            while node.next is not None:
+                if node.next.value == find:
+                    newNode.next = node.next
+                    node.next = newNode
+                    return
+                else:
+                    node = node.next
+
+    def insert_after(self, find, value):
+        pass
+
     def insert(self, value):
-        # method body here
         new_node = Node(value)
         new_node.next = self.head
         self.head = new_node
@@ -31,11 +57,6 @@ class LinkedList:
             return "NULL"
         return " -> ".join(values) + " -> NULL"
 
-
-class Node:
-    def __init__(self,value):
-        self.value = value
-        self.next = None
 
 class TargetError:
     pass
