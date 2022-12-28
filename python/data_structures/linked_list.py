@@ -5,39 +5,25 @@ class Node:
 
 
 class LinkedList:
-    """
-    Put docstring here
-    """
-
     def __init__(self):
         # initialization here
         self.head = None
 
-    def append(self, value):
-        self.linked_list.append(Node(value))
-
-    def insert_before(self, find, value):
-        newNode = Node(value)
-        node = self.head
-        if node is not None:
-            if node.value == find:
-                newNode.next = self.head
-                self.head = newNode
-            while node.next is not None:
-                if node.next.value == find:
-                    newNode.next = node.next
-                    node.next = newNode
-                    return
-                else:
-                    node = node.next
-
-    def insert_after(self, find, value):
-        pass
+    def __str__(self):
+        current = self.head
+        text = ""
+        while current:
+            node_string = "{ " + current.value + " } -> "
+            text += node_string
+            current = current.next
+        return text + "NULL"
 
     def insert(self, value):
-        new_node = Node(value)
-        new_node.next = self.head
-        self.head = new_node
+        # new_node = Node(value)
+        # new_node.next = self.head
+        # self.head = new_node
+
+        self.head = Node(value, self.head)
 
     def includes(self, value):
         current = self.head
@@ -47,16 +33,50 @@ class LinkedList:
             current = current.next
         return False
 
-    def __str__(self):
-        values = []
+    def append(self, value):
         current = self.head
-        while current is not None:
-            values.append("{ " + str(current.value) + " }")
+        while current.next:
             current = current.next
-        if len(values) == 0:
-            return "NULL"
-        return " -> ".join(values) + " -> NULL"
+        current.next = Node(value)
+
+    def insert_before(self, find, value):
+        current = self.head
+        old = None
+        try:
+            while current.value is not find:
+                old = current
+                current = current.next
+            if old is not None:
+                old.next = Node(value, current)
+            if old is None:
+                self.head = Node(value, current)
+        except Exception as error:
+            raise TargetError(error)
+
+    def insert_after(self, find, value):
+        current = self.head
+        try:
+            while current.value is not find:
+                current = current.next
+            new = Node(value)
+            new.next = current.next
+            current.next = new
+        except Exception as error:
+            raise TargetError(error)
+
+    def kth_from_end(self, k):
+        if k < 0:
+            raise TargetError()
+        current = self.head
+        ll_list = []
+        try:
+            while current:
+                ll_list.append(current.value)
+                current = current.next
+            return ll_list[-k-1]
+        except Exception as error:
+            raise TargetError(error)
 
 
-class TargetError:
+class TargetError(Exception):
     pass
