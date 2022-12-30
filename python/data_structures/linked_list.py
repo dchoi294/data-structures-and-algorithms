@@ -13,7 +13,7 @@ class LinkedList:
         current = self.head
         text = ""
         while current:
-            node_string = "{ " + current.value + " } -> "
+            node_string = "{ " + str(current.value) + " } -> "
             text += node_string
             current = current.next
         return text + "NULL"
@@ -35,9 +35,12 @@ class LinkedList:
 
     def append(self, value):
         current = self.head
-        while current.next:
-            current = current.next
-        current.next = Node(value)
+        if current is None:
+            self.head = Node(value, current)
+        else:
+            while current.next:
+                current = current.next
+            current.next = Node(value)
 
     def insert_before(self, find, value):
         current = self.head
