@@ -18,6 +18,10 @@
         - Arguments: none
         - Returns: a string representing all the values in the Linked List, formatted as: "{ a } -> { b } -> { c } -> NULL"
 
+### Whiteboard Process
+
+![whiteboard]()
+
 ### Approach & Efficiency
 
 - Creating Node and using Node class, adding nodes to the LinkedList class.
