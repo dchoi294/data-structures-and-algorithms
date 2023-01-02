@@ -14,7 +14,7 @@ class Queue:
 
     def __init__(self):
         # initialization here
-        self.head = None
+        self.front = None
         self.tail = None
 
     def enqueue(self, value):
@@ -23,21 +23,21 @@ class Queue:
             self.tail.next = Node(value)
             self.tail = self.tail.next
             return
-        self.tail = self.head = Node(value)
+        self.tail = self.front = Node(value)
 
     def dequeue(self):
         try:
-            dequeued = self.head
-            self.head = self.head.next
+            dequeued = self.front
+            self.front = self.front.next
             return dequeued.value
         except Exception as e:
             raise InvalidOperationError("Method not allowed on empty collection")
 
     def peek(self):
         try:
-            return self.head.value
+            return self.front.value
         except Exception as e:
             raise InvalidOperationError("Method not allowed on empty collection")
 
     def is_empty(self):
-        return self.head is None
+        return self.front is None

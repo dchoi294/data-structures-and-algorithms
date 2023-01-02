@@ -14,27 +14,27 @@ class Stack:
 
     def __init__(self):
         # initialization here
-        self.head = None
+        self.top = None
 
     def push(self, value):
         # method body here
         new_node = Node(value)
-        new_node.next = self.head
-        self.head = new_node
+        new_node.next = self.top
+        self.top = new_node
 
     def pop(self):
         try:
-            value = self.head.value
-            self.head = self.head.next
+            value = self.top.value
+            self.top = self.top.next
             return value
         except Exception as error:
             raise InvalidOperationError("Method not allowed on empty collection")
 
     def peek(self):
         try:
-            return self.head.value
+            return self.top.value
         except Exception as error:
             raise InvalidOperationError("Method not allowed on empty collection")
 
     def is_empty(self):
-        return self.head is None
+        return self.top is None
