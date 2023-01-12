@@ -6,18 +6,16 @@ class KaryTree:
         self.root = root
 
     def breadth_first(self):
+        if not self.root:
+            return []
         queue = Queue()
-
         collection = []
-
         queue.enqueue(self.root)
-
         while not queue.is_empty():
             node = queue.dequeue()
             collection.append(node.value)
             for child in node.children:
                 queue.enqueue(child)
-
         return collection
 
 

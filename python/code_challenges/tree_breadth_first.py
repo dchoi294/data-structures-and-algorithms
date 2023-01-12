@@ -1,16 +1,17 @@
-from data_structures.binary_tree import BinaryTree
+from data_structures.queue import Queue
 
 
 def breadth_first(tree):
-    try:
-        result, queue = [], [tree.root]
-        while queue:
-            front = queue.pop(0)
-            result.append(front.value)
-            if front.left:
-                queue.append(front.left)
-            if front.right:
-                queue.append(front.right)
+    result = []
+    if not tree.root:
         return result
-    except:
-        return []
+    queue = Queue()
+    queue.enqueue(tree.root)
+    while queue.front:
+        front = queue.dequeue()
+        result.append(front.value)
+        if front.left:
+            queue.enqueue(front.left)
+        if front.right:
+            queue.enqueue(front.right)
+    return result

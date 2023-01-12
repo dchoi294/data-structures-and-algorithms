@@ -2,9 +2,9 @@ from data_structures.invalid_operation_error import InvalidOperationError
 
 
 class Node:
-    def __init__(self, value, next=None):
+    def __init__(self, value):
         self.value = value
-        self.next = next
+        self.next = None
 
 
 class Queue:
@@ -13,17 +13,18 @@ class Queue:
     """
 
     def __init__(self):
-        # initialization here
         self.front = None
-        self.tail = None
+        self.back = None
 
     def enqueue(self, value):
-        # method body here
-        if self.tail:
-            self.tail.next = Node(value)
-            self.tail = self.tail.next
-            return
-        self.tail = self.front = Node(value)
+        new_node = Node(value)
+        if self.front is None:
+            self.front = new_node
+        if self.back:
+            self.back.next = new_node
+            self.back = self.back.next
+        else:
+            self.back = new_node
 
     def dequeue(self):
         try:
@@ -31,13 +32,13 @@ class Queue:
             self.front = self.front.next
             return dequeued.value
         except Exception as e:
-            raise InvalidOperationError("Method not allowed on empty collection")
+            raise InvalidOperationError(e)
 
     def peek(self):
         try:
             return self.front.value
         except Exception as e:
-            raise InvalidOperationError("Method not allowed on empty collection")
+            raise InvalidOperationError(e)
 
     def is_empty(self):
         return self.front is None
