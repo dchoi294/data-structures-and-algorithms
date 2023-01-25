@@ -1,4 +1,4 @@
-from python.code_challenges.merge_sort import merge_sort
+from code_challenges.merge_sort import merge_sort
 
 
 def test_merge_sort():
