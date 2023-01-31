@@ -92,3 +92,5 @@ From the root of the `data-structures-and-algorithms/python` folder, execute the
 - [Tree Breadth First](docs/tree_breadth_first/README.md)
 - [Tree Fizz Buzz](docs/tree_fizz_buzz/README.md)
 - [Hashtable](docs/hashtable/README.md)
+- [Hashtable Repeated Word](docs/hashtable_repeated_word/README.md)
+-
